@@ -12,29 +12,32 @@ export default function DownloadPanel({ onDownload }) {
   ];
 
   return (
-    <div className="space-y-3">
-      <label className="text-xs font-medium text-slate-400 uppercase tracking-wider">
-        Download
-      </label>
-      <div className="grid grid-cols-3 gap-2">
+    <div className="space-y-4">
+      <h3 className="font-heading text-sm font-bold uppercase tracking-widest opacity-70">
+        Output Format
+      </h3>
+      <div className="grid grid-cols-3 gap-3">
         {formats.map((fmt) => (
           <button
             key={fmt.ext}
             id={`download-${fmt.ext}`}
             onClick={() => onDownload(fmt.ext)}
-            className="flex flex-col items-center gap-1.5 p-3
-                       bg-white/5 border border-white/10 rounded-xl
-                       hover:bg-gradient-to-b hover:from-violet-500/10 hover:to-transparent
-                       hover:border-violet-500/30 hover:shadow-lg hover:shadow-violet-500/5
-                       active:scale-95 transition-all duration-200 group"
+            className="relative overflow-hidden flex flex-col items-center gap-2 p-4
+                       bg-white/40 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl
+                       hover:border-violet-500/50 hover:shadow-[0_0_20px_rgba(139,92,246,0.15)]
+                       active:scale-[0.97] transition-all duration-300 group"
           >
-            <span className="text-lg group-hover:scale-110 transition-transform duration-200">
+            <div className="absolute inset-0 bg-gradient-to-b from-violet-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            
+            <span className="text-2xl group-hover:-translate-y-1 group-hover:scale-110 drop-shadow-md transition-all duration-300">
               {fmt.icon}
             </span>
-            <span className="text-sm font-medium text-slate-300 group-hover:text-violet-300 transition-colors">
+            <span className="font-heading font-bold text-sm text-slate-800 dark:text-slate-200 group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors">
               {fmt.label}
             </span>
-            <span className="text-[10px] text-slate-500">{fmt.desc}</span>
+            <span className="text-[10px] uppercase font-medium tracking-wide text-slate-500 group-hover:text-slate-600 dark:group-hover:text-slate-400 transition-colors text-center leading-tight">
+              {fmt.desc}
+            </span>
           </button>
         ))}
       </div>
